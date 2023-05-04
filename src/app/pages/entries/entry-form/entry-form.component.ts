@@ -8,7 +8,11 @@ import { CategoryService } from "../../categories/shared/category.service";
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
 import { Validators } from '@angular/forms';
 
-
+@Component({
+  selector: 'app-entry-form',
+  templateUrl: './entry-form.component.html',
+  styleUrls: ['./entry-form.component.css']
+})
 
 export class EntryFormComponent extends BaseResourceFormComponent<Entry> 
   implements OnInit{
@@ -86,7 +90,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry>
 
   protected editionPageTitle(): string {
       const resourseName = this.resource.name || "";
-      return "Editando Lançamento" + resourseName;
+      return "Editando Lançamento: " + resourseName;
   }
 
 
