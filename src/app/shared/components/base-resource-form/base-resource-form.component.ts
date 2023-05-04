@@ -10,7 +10,8 @@ import { switchMap } from "rxjs/operators";
 
 import toastr from "toastr";
 
-export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked {
+export abstract class BaseResourceFormComponent<T extends BaseResourceModel> 
+    implements OnInit, AfterContentChecked {
 
     currentAction: string;
     resourceForm: FormGroup;
@@ -101,7 +102,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         }
     }
 
-    creationPageTitle(): string{
+    protected creationPageTitle(): string{
         return "Novo" // para sobreescrever dps 
     }
 
