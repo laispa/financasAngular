@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { EntryFormComponent } from './entry-form/entry-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,8 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    SharedModule,
     EntriesRoutingModule,
     IMaskModule,
     CalendarModule,
