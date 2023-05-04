@@ -3,7 +3,7 @@ import { CategoryService } from './../../categories/shared/category.service';
 
 import { Injectable, Injector } from '@angular/core';
 
-import { Observable, } from "rxjs";
+import { Observable } from "rxjs";
 import { catchError, flatMap } from "rxjs/operators";
 
 import { Entry } from "./entry.model";

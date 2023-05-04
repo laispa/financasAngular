@@ -13,10 +13,6 @@ export class CategoryService extends BaseResourceService<Category> {
    }
 
 
-  
-
-
-
   // PRIVATE METHODS
 
 
