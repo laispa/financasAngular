@@ -4,7 +4,7 @@ import { CategoryService } from './../../categories/shared/category.service';
 import { Injectable, Injector } from '@angular/core';
 
 import { Observable, } from "rxjs";
-import { flatMap } from "rxjs/operators";
+import { catchError, flatMap } from "rxjs/operators";
 
 import { Entry } from "./entry.model";
 
@@ -17,23 +17,22 @@ export class EntryService extends BaseResourceService<Entry> {
              { super("api/entries", injector, Entry.fromJson) } //só armazena a funcao, não executa
 
   create(entry: Entry): Observable<Entry> {
+    return this.setCategoryAndSendToServer(entry, super.create.bind(this))
 
-    return this.categoryService.getById(entry.categoryId).pipe(
-      flatMap(category => {
-        entry.category = category;
-        return super.create(entry);
-      })
-    )
-    
   }
 
   update(entry: Entry): Observable<Entry> {
+    return this.setCategoryAndSendToServer(entry, super.update.bind(this)) 
+  }
+
+  private setCategoryAndSendToServer(entry: Entry, sendFn: any): Observable<Entry>{
     return this.categoryService.getById(entry.categoryId).pipe(
       flatMap(category => {
-        entry.category = category
-        return super.update(entry);
-      })
-    )
+        entry.category = category;
+        return sendFn(entry); //metodos iguais em base // this no flat map mudou tbm
+      }),
+      catchError(this.handleError) // usar para pegar em erro 
+    );
   }
 
   // PRIVATE METHODS
