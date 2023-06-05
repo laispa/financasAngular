@@ -6,13 +6,15 @@ import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
+import { NavbarComponent } from '../core/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     BreadCrumbComponent, 
     PageHeaderComponent, 
     FormFieldErrorComponent,
-    ServerErrorMessagesComponent],
+    ServerErrorMessagesComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
